@@ -4,7 +4,6 @@ import { DynamicModule } from '@nestjs/common';
 import { LazyModuleLoader } from '@nestjs/core';
 import { LazyModule } from '../lazy/lazy.module';
 import { SecurityModule } from '../security/security.module';
-import { UserModule } from '../user/user.module';
 import { SeedRecipe } from './recipe/seed-recipe';
 import { SeedRegistry } from './registry/seed.registry';
 import { SeederService } from './service/seeder.service';

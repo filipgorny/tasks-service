@@ -8,4 +8,5 @@ export default (env = process.env): EnvironmentVariables => ({
   DATABASE_PORT: parseInt(env.DATABASE_PORT),
   DATABASE_CACHE_ENABLED: 0,
   DATABASE_TIMEZONE: env.DATABASE_TIMEZONE,
+  JWT_SECRET: env.JWT_SECRET,
 });

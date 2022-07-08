@@ -1,3 +1,4 @@
+import { JwtAuthGuard } from './../../auth/guard/jwt.guard';
 import { EventService } from './../../event/service/event.service';
 import { FindTasksQuery } from './../query/find-tasks.query';
 import { InjectRepository } from '@mikro-orm/nestjs';
@@ -10,6 +11,7 @@ import {
   Param,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { randomUUID } from 'crypto';
 import { ResultTaskDto } from '../dto/result-task.dto';
@@ -25,6 +27,7 @@ export class TaskController {
   ) {}
 
   @Post()
+  @UseGuards(JwtAuthGuard)
   async create(@Body() createTaskDto: CreateTaskDto): Promise<ResultTaskDto> {
     const task = new Task();
     task.uuid = randomUUID();
@@ -39,6 +42,7 @@ export class TaskController {
   }
 
   @Get()
+  @UseGuards(JwtAuthGuard)
   async find(
     @Query() findTasksQuery: FindTasksQuery,
   ): Promise<ResultTaskDto[]> {
@@ -54,6 +58,7 @@ export class TaskController {
   }
 
   @Post(':uuid/done')
+  @UseGuards(JwtAuthGuard)
   async done(@Param('uuid') uuid: string): Promise<ResultTaskDto> {
     const task = await this.repository.findOne({
       uuid: uuid,
@@ -75,6 +80,7 @@ export class TaskController {
   }
 
   @Post(':uuid/undone')
+  @UseGuards(JwtAuthGuard)
   async undone(@Param('uuid') uuid: string): Promise<ResultTaskDto> {
     const task = await this.repository.findOne({
       uuid: uuid,

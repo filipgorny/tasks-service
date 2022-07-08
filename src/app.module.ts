@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { EventModule } from './event/event.module';
 import { TaskModule } from './task/task.module';
 import { Module } from '@nestjs/common';
@@ -9,8 +10,6 @@ import { EnvironmentVariables } from './config/environment-variables.interface';
 import { createMikroormConfig } from './config/create-mikroorm-config';
 import { SeedModule } from './seed/seed.module';
 import { Migrator } from './migration/migrator';
-import { UserModule } from './user/user.module';
-import { UserRecipe } from './user/seed/user.recipe';
 
 @Module({
   imports: [
@@ -22,8 +21,7 @@ import { UserRecipe } from './user/seed/user.recipe';
       },
       inject: [ConfigService],
     }),
-    SeedModule.forRoot(UserRecipe),
-    UserModule,
+    SeedModule.forRoot(),
     TaskModule,
     EventModule,
   ],

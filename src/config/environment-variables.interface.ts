@@ -6,4 +6,5 @@ export type EnvironmentVariables = {
   DATABASE_PORT: number;
   DATABASE_CACHE_ENABLED: number;
   DATABASE_TIMEZONE: string;
+  JWT_SECRET: string;
 };

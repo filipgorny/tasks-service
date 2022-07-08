@@ -1,13 +1,11 @@
+import { MigrationObject, MigrationsOptions } from '@mikro-orm/core';
+import { Migration08072200 } from './migration-08072200';
 import { Migration08072201 } from './migration-08072201';
 import { MigrationEvent } from './migration-event';
-import { Migration08072200 } from './migration-08072200';
-import { MigrationTask } from './migration-task';
-import { MigrationObject, MigrationsOptions } from '@mikro-orm/core';
 import { MigrationSeed } from './migration-seed';
-import { MigrationUser } from './migration-user';
+import { MigrationTask } from './migration-task';
 
 const migrations = [
-  MigrationUser,
   MigrationSeed,
   MigrationTask,
   MigrationEvent,
