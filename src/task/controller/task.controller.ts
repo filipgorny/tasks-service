@@ -45,6 +45,9 @@ export class TaskController {
     const tasks = await this.repository.findAll({
       offset: findTasksQuery.offset,
       limit: findTasksQuery.limit,
+      orderBy: {
+        id: 'DESC',
+      },
     });
 
     return tasks.map((task) => new ResultTaskDto(task));

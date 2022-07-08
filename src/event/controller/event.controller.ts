@@ -18,6 +18,9 @@ export class EventController {
     const events = await this.repository.findAll({
       offset: findEventsQuery.offset,
       limit: findEventsQuery.limit,
+      orderBy: {
+        id: 'DESC',
+      },
     });
 
     return events.map((event) => new ResultEventDto(event));
