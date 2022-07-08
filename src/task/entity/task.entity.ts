@@ -7,6 +7,9 @@ export class Task {
   id: number;
 
   @Property()
+  uuid: string;
+
+  @Property()
   label: string;
 
   @Property()

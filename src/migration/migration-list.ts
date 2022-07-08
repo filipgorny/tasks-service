@@ -1,9 +1,15 @@
+import { Migration08072200 } from './migration-08072200';
 import { MigrationTask } from './migration-task';
 import { MigrationObject, MigrationsOptions } from '@mikro-orm/core';
 import { MigrationSeed } from './migration-seed';
 import { MigrationUser } from './migration-user';
 
-const migrations = [MigrationUser, MigrationSeed, MigrationTask];
+const migrations = [
+  MigrationUser,
+  MigrationSeed,
+  MigrationTask,
+  Migration08072200,
+];
 
 export const migrationsList: MigrationObject[] = migrations.map((migration) => {
   return {

@@ -3,6 +3,9 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class ResultTaskDto {
   @ApiProperty()
+  uuid: string;
+
+  @ApiProperty()
   label: string;
 
   @ApiProperty()
@@ -13,6 +16,7 @@ export class ResultTaskDto {
 
   constructor(task?: Task) {
     if (task) {
+      this.uuid = task.uuid;
       this.label = task.label;
       this.done = task.done;
       this.createdAt = task.createdAt;
