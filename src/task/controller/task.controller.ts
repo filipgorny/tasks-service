@@ -1,9 +1,11 @@
+import { EventService } from './../../event/service/event.service';
 import { FindTasksQuery } from './../query/find-tasks.query';
 import { InjectRepository } from '@mikro-orm/nestjs';
 import {
   Body,
   Controller,
   Get,
+  Inject,
   NotFoundException,
   Param,
   Post,
@@ -19,6 +21,7 @@ import { TaskRepository } from './../repository/task.respository';
 export class TaskController {
   constructor(
     @InjectRepository(Task) private readonly repository: TaskRepository,
+    private readonly eventService: EventService,
   ) {}
 
   @Post()
@@ -57,6 +60,10 @@ export class TaskController {
       throw new NotFoundException('Task not found');
     }
 
+    if (!task.done) {
+      await this.eventService.add(`Task ${task.uuid} marked as done`);
+    }
+
     task.done = true;
 
     await this.repository.save(task);
@@ -72,6 +79,10 @@ export class TaskController {
 
     if (!task) {
       throw new NotFoundException('Task not found');
+    }
+
+    if (!task.done) {
+      await this.eventService.add(`Task ${task.uuid} marked as undone`);
     }
 
     task.done = false;

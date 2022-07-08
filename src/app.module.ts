@@ -1,3 +1,4 @@
+import { EventModule } from './event/event.module';
 import { TaskModule } from './task/task.module';
 import { Module } from '@nestjs/common';
 import { AppService } from './app.service';
@@ -24,6 +25,7 @@ import { UserRecipe } from './user/seed/user.recipe';
     SeedModule.forRoot(UserRecipe),
     UserModule,
     TaskModule,
+    EventModule,
   ],
   controllers: [],
   providers: [AppService, Migrator],

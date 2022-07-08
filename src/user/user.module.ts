@@ -15,8 +15,7 @@ import { LazyModuleLoader } from '@nestjs/core';
     MikroOrmModule.forFeature(entities),
     ConfigModule.forRoot({ load: [config] }),
     SeedModule.forFeature(UserRecipe),
-    LazyModule,
   ],
-  providers: [LazyModuleLoader],
+  providers: [],
 })
 export class UserModule {}
