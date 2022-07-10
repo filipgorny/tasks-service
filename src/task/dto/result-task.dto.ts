@@ -6,6 +6,9 @@ export class ResultTaskDto {
   uuid: string;
 
   @ApiProperty()
+  number: string;
+
+  @ApiProperty()
   label: string;
 
   @ApiProperty()
@@ -17,6 +20,7 @@ export class ResultTaskDto {
   constructor(task?: Task) {
     if (task) {
       this.uuid = task.uuid;
+      this.number = task.number;
       this.label = task.label;
       this.done = task.done;
       this.createdAt = task.createdAt;

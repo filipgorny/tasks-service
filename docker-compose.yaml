@@ -15,7 +15,7 @@ services:
     build: ./docker/app
     command: npm run start:dev --trace-warning
     ports:
-      - 3420:3420
+      - 3444:3444
     volumes:
       - ./:/usr/src/app
     restart: unless-stopped

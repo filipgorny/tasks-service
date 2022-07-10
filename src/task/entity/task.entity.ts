@@ -9,6 +9,11 @@ export class Task {
   @Property()
   uuid: string;
 
+  @Property({
+    name: 'number',
+  })
+  numberValue: string;
+
   @Property()
   label: string;
 
@@ -17,4 +22,20 @@ export class Task {
 
   @Property()
   createdAt: Date;
+
+  get number() {
+    if (this.numberValue == undefined || this.numberValue.length == 0) {
+      return `ID-${this.idFormatted}`;
+    }
+
+    return this.numberValue;
+  }
+
+  set number(value: string) {
+    this.numberValue = value;
+  }
+
+  get idFormatted(): string {
+    return this.id.toString().padStart(4, '0');
+  }
 }
